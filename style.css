@@ -1,0 +1,139 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "Helvetica Neue LT Std 55 Roman";
+    src: url('font/HelveticaNeueLTStd55Roman.woff');
+    font-style: normal;
+    font-weight: normal;
+}
+
+body {
+    font-family: "Helvetica Neue LT Std 55 Roman";
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ecf0f3;
+}
+
+form {
+    margin: 0 1rem;
+    padding: 3rem 1.5rem;
+    border-radius: 20px;
+    box-shadow: 5px 5px 10px #cbced1,
+                -5px -5px 10px #ffffff;
+}
+
+h1 {
+    font-size: 1.5rem;
+    letter-spacing: .5px;
+    margin-bottom: .5rem;
+}
+
+p {
+    font-size: .8rem;
+}
+
+h1, p {
+    text-align: center;
+}
+
+a {    
+    color: #1a73e8;
+}
+
+.names {
+    margin-top: 2rem;
+}
+
+.fields {
+    width: 100%;
+    margin-bottom: 1.2rem;
+    position: relative;
+}
+
+.fields svg {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    bottom: 10px;
+    left: 15px;
+}
+
+.fields input {
+    width: 100%;
+    background: none;
+    outline: none;
+    border: none;
+    padding: .7rem .5rem .7rem 2.5rem;
+    font-size: .9rem;
+    border-radius: 15px;
+    box-shadow: inset 4px 4px 4px #cbced1,
+                inset -4px -4px 4px #ffffff;
+}
+
+.policy {
+    display: flex;
+}
+
+.policy input {
+    height: 16px;
+}
+
+.policy span {
+    margin-left: .5rem;
+    font-size: .85rem;
+}
+
+.policy a {
+    text-decoration: none;
+}
+
+button {
+    background: #1a73e8;
+    border: none;
+    width: 100%;
+    font-family: "Helvetica Neue LT Std 55 Roman";
+    font-size: 1rem;
+    letter-spacing: .5px;
+    padding: .7rem 0;
+    margin: 1.2rem 0;
+    border-radius: 20px;
+    color: #ffffff;
+    outline: none;
+    cursor: pointer;
+    box-shadow: 3px 3px 8px #b1b1b1,
+                -3px -3px 8px #ffffff;
+    transition: .5s;
+}
+
+button:hover {
+    background: #2985ff;
+}
+
+button:active {
+    box-shadow: none;
+    background: #1a71e4;
+    outline: none;
+}
+
+@media screen and (min-width:400px) {
+    .names {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .names .fields {
+        width: 48%;
+    }
+}
+
+@media screen and (max-width:330px) {
+    h1, p {
+        text-align: left;
+    }
+}
