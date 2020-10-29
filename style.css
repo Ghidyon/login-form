@@ -80,9 +80,13 @@ a {
     display: flex;
 }
 
+.policy input {
+    align-self: center;
+}
+
 .policy label {
     margin-left: .5rem;
-    font-size: .85rem;
+    font-size: .8rem;
 }
 
 .policy a {
