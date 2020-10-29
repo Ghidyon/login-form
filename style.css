@@ -80,10 +80,6 @@ a {
     display: flex;
 }
 
-.policy input {
-    height: 15px;
-}
-
 .policy label {
     margin-left: .5rem;
     font-size: .85rem;
