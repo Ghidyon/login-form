@@ -87,7 +87,6 @@ a {
 .policy label {
     margin-left: .5rem;
     font-size: .8rem;
-    padding-top: .2rem;
 }
 
 .policy a {
@@ -212,5 +211,9 @@ button:active {
         width: 100%;
         border-radius: 0;
         box-shadow: none;
+    }
+
+    .policy label {
+        padding-top: .25rem;
     }
 }
