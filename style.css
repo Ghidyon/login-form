@@ -215,5 +215,6 @@ button:active {
 
     .policy label {
         align-self: flex-end;
+        font-size: .85rem;
     }
 }
