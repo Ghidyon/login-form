@@ -212,4 +212,8 @@ button:active {
         border-radius: 0;
         box-shadow: none;
     }
+
+    .policy label {
+        align-self: flex-end;
+    }
 }
