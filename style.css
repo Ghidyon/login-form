@@ -144,6 +144,7 @@ button:disabled {
     display: none;
     justify-content: center;
     align-items: center;
+    margin-left: .2rem;
 }
 
 #bar1, #bar2, #bar3, #bar4, #bar5 {
