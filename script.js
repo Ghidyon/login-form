@@ -5,8 +5,8 @@ class FormValidator {
     }
 
     initialize() {
-        this.validateOnSubmit();
         this.validateOnEntry();
+        this.validateOnSubmit();
     }
 
     validateInput(field) {
@@ -15,47 +15,77 @@ class FormValidator {
         }
         else {
             if (field.type === "text") {
-                const matchText = /^[a-zA-Z\s][^0-9]+$/;
-                if (matchText.test(field.value)) {
-                    this.setStatus(field, null, "success");
-                }
-                else {
-                    this.setStatus(field, "Please don't use number characters.", "error");
-                }
+                return this.validateName(field);
             }
 
             if (field.type === "email") {
-                const matchEmail = /\S+@\S+.\S+/;
-                if (matchEmail.test(field.value)) {
-                    this.setStatus(field, null, "success");
-                }
-                else {
-                    this.setStatus(field, "Please input a valid email.", "error");
-                }
+                return this.validateEmail(field);
             }
 
             if (field.id === "password") {
-                if (field.value.length < 8) {
-                    this.setStatus(field, "Password should be 8 characters long.", "error");
-                }
-                else {
-                    this.setStatus(field, null, "success");
-                }
+                return this.validatePassword(field);
             }
 
             if (field.id === "confirm-password") {
-                const password = this.form.querySelector('#password');
+                return this.validatePwdConfirmation(field);
+            }
 
-                if (field.value !== password.value) {
-                    this.setStatus(field, "Password does not match!", "error");
-                }
-                else {
-                    this.setStatus(field, null, "success");
-                }
+            if (field.type === "checked") {
+                return this.validateCheckbox(field);
             }
         }
+    }
 
+    validateName(field) {
+        if (field.value.length > 1) {
+            const matchText = /^[a-zA-Z\s][^0-9]+$/;
+            if (matchText.test(field.value)) {
+                this.setStatus(field, null, "success");
+                return true;
+            }
+            else {
+                this.setStatus(field, "Use valid characters.", "error");
+            }
+        }
+    }
 
+    validateEmail(field) {
+        const matchEmail = /\S+@\S+.\S+/;
+        if (matchEmail.test(field.value)) {
+            this.setStatus(field, null, "success");
+            return true;
+        }
+        else {
+            this.setStatus(field, "Please input a valid email.", "error");
+        }
+    }
+
+    validatePassword(field) {
+        if (field.value.length < 8) {
+            this.setStatus(field, "Password should be 8 characters long.", "error");
+        }
+        else {
+            this.setStatus(field, null, "success");
+            return true;
+        }
+    }
+
+    validatePwdConfirmation(field) {
+        const password = this.form.querySelector('#password');
+
+        if (field.value !== password.value) {
+            this.setStatus(field, "Password does not match!", "error");
+        }
+        else {
+            this.setStatus(field, null, "success");
+            return true;
+        }
+    }
+
+    validateCheckbox(field) {
+        if (field.checked) {
+            return true;
+        }
     }
 
     setStatus(field, message, status) {
@@ -63,23 +93,16 @@ class FormValidator {
         const icon = field.parentElement.querySelector('.icon');
 
         if (status === "success") {
-            icon.classList.remove('red')
+            icon.classList.remove('red');
+            icon.classList.add('blue')
             errorMessage.innerHTML = "";
         }
 
         if (status === "error") {
+            icon.classList.remove('blue');
             icon.classList.add('red');
             errorMessage.innerHTML = message;
         }
-    }
-
-    validateFields() {
-        let self = this; //stores the value of the 'this' keyword on the constructor
-
-        this.fields.forEach(field => {
-            const input = document.querySelector(`#${field}`);
-            self.validateInput(input);
-        })
     }
 
     validateOnSubmit() {
@@ -87,23 +110,29 @@ class FormValidator {
 
         this.form.addEventListener("submit", e => {
             e.preventDefault(); //prevents the default action on the submit button
-            self.validateFields();
+            self.form.submit();
+            /* self.fields.forEach(field => {
+                const input = document.querySelector(`#${field}`);
+                self.validateInput(input);
+            }) */
         })
     }
 
     validateOnEntry() {
         let self = this; //stores the value of the 'this' keyword on the constructor
-
-        this.form.addEventListener("input", event => {
-            self.validateFields();
+        this.fields.forEach(field => {
+            const input = document.querySelector(`#${field}`);
+            input.addEventListener("input", () => {
+                self.validateInput(input);
+            })
         })
     }
-
 
 }
 
 const form = document.querySelector('.form');
 const fields = ["first-name", "last-name", "email", "password", "confirm-password", "checked"];
+const button = document.querySelector('button');
 
 const validator = new FormValidator(form, fields);
 validator.initialize();

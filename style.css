@@ -127,6 +127,7 @@ button:active {
 button:disabled {
     opacity: .5;
     background: #1a73e8;
+    cursor: not-allowed;
 }
 
 .error-message {
@@ -187,6 +188,9 @@ button:disabled {
     stroke: red;
 }
 
+.blue {
+    stroke: #1a73e8;
+}
 
 /* Responsive Styling */
 
