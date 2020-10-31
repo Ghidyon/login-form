@@ -79,7 +79,6 @@ a {
 }
 
 [type="checkbox"] {
-    background: transparent;
     box-shadow: inset 2px 2px 2px #cbced1,
                 inset -2px -2px 2px #ffffff;
 }

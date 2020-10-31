@@ -51,13 +51,15 @@ class FormValidator {
     }
 
     validateName(field) {
-        const matchText = /^[a-zA-Z\s][^0-9]+$/;
-        if (matchText.test(field.value)) {
-            this.setStatus(field, null, "success");
-            field.value = field.value.trim();
-        }
-        else {
-            this.setStatus(field, "Use valid characters.", "error");
+        if (field.value > 1) {
+            const matchText = /^[a-zA-Z\s][^0-9]+$/;
+            if (matchText.test(field.value)) {
+                this.setStatus(field, null, "success");
+                field.value = field.value.trim();
+            }
+            else {
+                this.setStatus(field, "Use valid characters.", "error");
+            }
         }
     }
 
