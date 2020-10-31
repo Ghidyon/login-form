@@ -270,6 +270,10 @@ button:disabled {
         left: 15px;
     }
 
+    .fields input {
+        padding-top: 1.1rem;
+    }
+
     .policy label {
         padding-top: .25rem;
     }
