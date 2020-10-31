@@ -266,12 +266,8 @@ button:disabled {
     }
 
     .fields svg {
-        bottom: 13px;
+        bottom: 15px;
         left: 15px;
-    }
-
-    .fields input {
-        padding-top: 1rem;
     }
 
     .policy label {
