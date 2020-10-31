@@ -51,7 +51,7 @@ class FormValidator {
     }
 
     validateName(field) {
-        if (field.value > 1) {
+        if (field.value.length > 1) {
             const matchText = /^[a-zA-Z\s][^0-9]+$/;
             if (matchText.test(field.value)) {
                 this.setStatus(field, null, "success");
