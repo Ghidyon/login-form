@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <form action="" autocomplete="off" class="form form-width">
+        <h1>Login</h1>
+        <div class="fields m-top">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#555555">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            <input type="email" class="field" name="Email" id="email" placeholder="Email">
+            <span class="error-message"></span>
+        </div>
+        <div class="fields">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#555555">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+            </svg>
+            <input type="password" class="field" name="Password" id="password" placeholder="Password">
+            <span class="error-message"></span>
+        </div>
+        <button disabled>
+            <span>Login</span>
+            <div class="loader">
+                <div id="bar1"></div>
+                <div id="bar2"></div>
+                <div id="bar3"></div>
+                <div id="bar4"></div>
+                <div id="bar5"></div>
+            </div>
+        </button>
+        <p class="a-left">Don't have an account? <a href="index.html">Create account</a></p>
+    </form>
+
+    <script type="module" src="validate.js"></script>
+</body>
+
+</html>

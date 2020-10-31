@@ -1,8 +1,4 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700&display=swap");
 
 @font-face {
     font-family: "Helvetica Neue LT Std 55 Roman";
@@ -11,10 +7,16 @@
     font-weight: normal;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Helvetica Neue LT Std 55 Roman", "Lato";
+}
+
 body {
-    font-family: "Helvetica Neue LT Std 55 Roman";
-    min-height: 100vh;
     display: flex;
+    min-height: 100vh;
     justify-content: center;
     align-items: center;
     background: #ecf0f3;
@@ -76,6 +78,16 @@ a {
                 inset -4px -4px 4px #ffffff;
 }
 
+[type="checkbox"] {
+    background: transparent;
+    box-shadow: inset 2px 2px 2px #cbced1,
+                inset -2px -2px 2px #ffffff;
+}
+
+input::placeholder, input::-webkit-input-placeholder, input::-webkit-input-placeholder {
+    font-size: .8rem;
+}
+
 .policy {
     display: flex;
 }
@@ -100,7 +112,7 @@ button {
     background: #1a73e8;
     border: none;
     width: 100%;
-    font-family: "Helvetica Neue LT Std 55 Roman";
+    font-family: "Helvetica Neue LT Std 55 Roman", "Lato";
     font-size: 1rem;
     letter-spacing: .5px;
     padding: .8rem 0;
@@ -183,7 +195,7 @@ button:disabled {
 }
 
 
-/* Utilities */
+/* Utilities and Animations */
 
 .red {
     stroke: red;
@@ -193,7 +205,9 @@ button:disabled {
     stroke: #1a73e8;
 }
 
-/* Responsive Styling */
+.m-top {
+    margin-top: 2.5rem;
+}
 
 @-webkit-keyframes animateLoader {
     0% {
@@ -219,6 +233,9 @@ button:disabled {
     }
 }
 
+
+/* Responsive Styling */
+
 @media screen and (min-width:400px) {
     .names {
         display: flex;
@@ -228,10 +245,14 @@ button:disabled {
     .names .fields {
         width: 47.5%;
     }
+        
+    .form-width {
+        width: 350px;
+    }
 }
 
 @media screen and (max-width:300px) {
-    h1, p {
+    .a-left {
         text-align: left;
     }
 }
@@ -242,6 +263,11 @@ button:disabled {
         padding: 2.5rem 1.5rem;
         border-radius: 0;
         box-shadow: none;
+    }
+
+    .fields svg {
+        bottom: 13px;
+        left: 15px;
     }
 
     .policy label {

@@ -6,6 +6,7 @@ class FormValidator {
 
     initialize() {
         this.validateOnEntry();
+        this.enableButton();
         this.validateOnSubmit();
     }
 
@@ -32,10 +33,6 @@ class FormValidator {
             this.setStatus(field, `${field.getAttribute('name')} cannot be blank!`, "error");
         }
         else {
-            if (field.type === "text") {
-                return this.validateName(field);
-            }
-
             if (field.type === "email") {
                 return this.validateEmail(field);
             }
@@ -43,21 +40,6 @@ class FormValidator {
             if (field.id === "password") {
                 return this.validatePassword(field);
             }
-
-            if (field.id === "confirm-password") {
-                return this.validatePwdConfirmation(field);
-            }
-        }
-    }
-
-    validateName(field) {
-        const matchText = /^[a-zA-Z\s][^0-9]+$/;
-        if (matchText.test(field.value)) {
-            this.setStatus(field, null, "success");
-            field.value = field.value.trim();
-        }
-        else {
-            this.setStatus(field, "Use valid characters.", "error");
         }
     }
 
@@ -80,17 +62,6 @@ class FormValidator {
         }
     }
 
-    validatePwdConfirmation(field) {
-        const password = this.form.querySelector('#password');
-
-        if (field.value !== password.value) {
-            this.setStatus(field, "Password does not match!", "error");
-        }
-        else {
-            this.setStatus(field, null, "success");
-        }
-    }
-
     setStatus(field, message, status) {
         const errorMessage = field.parentElement.querySelector('.error-message');
         const icon = field.parentElement.querySelector('.icon');
@@ -107,36 +78,19 @@ class FormValidator {
             errorMessage.innerHTML = message;
         }
     }
-}
-
-class EnableButton {
-    constructor(form, fields) {
-        this.form = form;
-        this.fields = fields;
-    }
 
     enableButton() {
+        let self = this;
         this.form.addEventListener("input", e => {
-            const firstName = document.querySelector(`#${fields[0]}`);
-            const lastName = document.querySelector(`#${fields[1]}`);
-            const email = document.querySelector(`#${fields[2]}`);
-            const password = document.querySelector(`#${fields[3]}`);
-            const pwdConfirmation = document.querySelector(`#${fields[4]}`);
-            const checkbox = document.querySelector(`#${fields[5]}`);
-            if (this.validName(firstName) && this.validName(lastName) && this.validEmail(email) && this.validPassword(password) && this.validPwdConfirmation(pwdConfirmation) && this.checkedCheckbox(checkbox)) {
+            const email = document.querySelector(`#${fields[0]}`)
+            const password = document.querySelector(`#${fields[1]}`)
+            if (self.validEmail(email) === true && self.validPassword(password) === true) {
                 button.disabled = false;
             }
             else {
                 button.disabled = true;
             }
         })
-    }
-
-    validName(field) {
-        const matchText = /^[a-zA-Z\s][^0-9]+$/; //regex to check name format
-        if (matchText.test(field.value)) {
-            return true;
-        }
     }
 
     validEmail(field) {
@@ -151,26 +105,11 @@ class EnableButton {
             return true;
         }
     }
-
-    validPwdConfirmation(field) {
-        const password = this.form.querySelector('#password');
-        if (field.value == password.value) {
-            return true;
-        }
-    }
-
-    checkedCheckbox(field) {
-        if (field.checked) {
-            return true;
-        }
-    }
 }
 
 const form = document.querySelector('.form');
-const fields = ["first-name", "last-name", "email", "password", "confirm-password", "checked"];
+const fields = ["email", "password"];
 const button = document.querySelector('button');
 
 const validator = new FormValidator(form, fields);
-const btn = new EnableButton(form, fields);
 validator.initialize();
-btn.enableButton();
